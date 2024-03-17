@@ -2,6 +2,9 @@
 
 Este código implementa um transdutor Mealy para converter códigos Morse em caracteres. Vou explicar cada parte e depois discutir por que é um transdutor Mealy.
 
+## Apresentação de Slide
+https://www.canva.com/design/DAF_ye2Xcx4/mtdpvP-XS6a8U8dfQCZnXw/edit?utm_content=DAF_ye2Xcx4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+
 ## Modelagem:
 O código define uma classe MealyMorseCode que implementa o transdutor Mealy.
 O método iniciar inicializa uma lista de dados, onde cada elemento é uma sequência de código Morse.
