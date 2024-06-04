@@ -2,6 +2,9 @@
 
 Este projeto implementa uma Máquina de Turing Universal que pode processar e reconhecer linguagens livre de contexto e sensíveis ao contexto, especificamente as linguagens $a^n b^n$ e $a^n b^n c^n$. A implementação é feita em Ruby e utiliza arquivos para ler os códigos das máquinas de Turing específicas.
 
+### Apresentação Slide
+[Apresentação](https://www.canva.com/design/DAGG8HXMxNA/54PWsCryOPiR9tlInNkitQ/edit?utm_content=DAGG8HXMxNA&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+
 ## Funcionalidades
 
 - **Reconhecimento de Linguagem Livre de Contexto**: A máquina pode reconhecer e validar sequências do tipo $a^n b^n$, onde o número de 'a's é igual ao número de 'b's.
