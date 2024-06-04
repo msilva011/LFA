@@ -13,6 +13,7 @@ class MTU
     end
   
     def processar
+      puts ("-------------------DETALHES---------------")
       while @cursor < @fita.length  # Continua até que o cursor alcance o fim da fita
         char = @fita[@cursor]
         transicao = @transicoes[[@estado, char]]  # Busca a transição para o estado atual e char
@@ -24,7 +25,7 @@ class MTU
         puts "Estado atual: #{@estado}, Símbolo: #{char}, Nova transição: #{transicao}"
   
         @fita[@cursor] = novo_char if novo_char  # Substitui o char na fita
-        @estado = novo_estado if novo_estado  # Muda o estado
+        @estado = novo_estado if novo_estado  
         @cursor += (movimento == 'D' ? 1 : -1) if movimento  
   
         puts "Fita atual: #{@fita.join}, Novo estado: #{@estado}, Cursor: #{@cursor}"
