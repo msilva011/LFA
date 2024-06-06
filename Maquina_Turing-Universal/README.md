@@ -5,26 +5,53 @@ Este projeto implementa uma Máquina de Turing Universal que pode processar e re
 ### Apresentação Slide
 [Apresentação](https://www.canva.com/design/DAGG8HXMxNA/54PWsCryOPiR9tlInNkitQ/edit?utm_content=DAGG8HXMxNA&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
-## Funcionalidades
 
-- **Reconhecimento de Linguagem Livre de Contexto**: A máquina pode reconhecer e validar sequências do tipo $a^n b^n$, onde o número de 'a's é igual ao número de 'b's.
-- **Reconhecimento de Linguagem Sensível ao Contexto**: A máquina também pode reconhecer e validar sequências do tipo $a^n b^n c^n$, onde o número de 'a's, 'b's, e 'c's são iguais.
-- **Leitura de Configuração de Máquina de Arquivo**: O código da máquina de Turing (MT) é lido de um arquivo, permitindo flexibilidade na configuração e teste de diferentes máquinas de Turing.
+## Estrutura do Código
 
-## Estrutura do Projeto
+A classe `MTU` é a principal componente deste projeto. Abaixo está uma descrição de suas principais funcionalidades:
 
-O projeto é composto por vários módulos e classes principais:
+### Atributos
 
-- `CodificacaoAnBn`: Módulo com as transições para a máquina de Turing que processa $a^n b^n$.
-- `CodificacaoAnBnCn`: Módulo com as transições para a máquina de Turing que processa $a^n b^n c^n$.
-- `MTU`: Classe que implementa a máquina de Turing Universal. Lê a entrada, aplica as transições definidas nos módulos e determina se a cadeia é aceita ou rejeitada.
+- `fita`: Representa a fita da MTU.
+- `estado`: Estado atual da MTU.
+- `cursor`: Posição atual do cursor na fita.
+- `estado_leitura`, `simbolo_leitura`, `estado_destino`, `simbolo_escrita`, `movimento`, `transicoes`: Variáveis para armazenar as transições durante o processamento.
 
-## Panorâma Geral
+### Métodos
 
-A Máquina de Turing Universal (MTU) é capaz de simular outras Máquinas de Turing com base em transições definidas.
+- `initialize`: Inicializa a MTU com o estado e cursor iniciais.
+- `processar(entrada)`: Processa a entrada lida da fita.
+- `submaquina(transicoes)`: Executa as transições lidas em uma submáquina.
+- `operar(escrever, estado, movimento)`: Realiza operações de escrita e movimentação na fita.
+- `fita_com_marca`: Retorna a fita com a posição atual do cursor marcada.
+- `fita`: Retorna a fita atual.
 
-- `Simulação de Outras Máquinas de Turing:` A classe MTU é projetada para ser uma plataforma que pode adaptar seu comportamento para simular diferentes Máquinas de Turing. Isso é alcançado através da definição de transições que são especificadas em módulos separados, como CodificacaoAnBn e CodificacaoAnBnCn. Cada módulo define um conjunto específico de regras de transição que correspondem ao comportamento de uma Máquina de Turing particular para uma linguagem específica.
+## Execução
 
-- `Processamento de Cadeias de Entrada:` A classe MTU toma uma cadeia de entrada, a transforma em uma lista de caracteres, e processa essa lista de acordo com as regras de transição definidas. O processamento ocorre em um loop que continua até que não haja mais transições aplicáveis ou até que a máquina atinja um estado de aceitação (qf) ou rejeição (qr).
+Para executar a MTU, siga as etapas abaixo:
 
-- `Verificação de Aceitação:` Durante o processamento, a máquina verifica ativamente se a cadeia de entrada é aceita pela máquina simulada. A cadeia é considerada aceita se, ao final do processamento, a máquina estiver no estado de aceitação (qf). Se a máquina alcançar o estado de rejeição (qr), ou se não houver mais transições aplicáveis, a cadeia é considerada não aceita.
+1. Inicialize a MTU:
+    ```ruby
+    mtu = MTU.new
+    ```
+
+2. Carregue a entrada e processe-a:
+    ```ruby
+    entrada = 'sua_entrada_aqui'
+    mtu.processar(entrada)
+    ```
+
+3. Acompanhe a saída na fita:
+    ```ruby
+    puts mtu.fita
+    ```
+
+## Exemplo de Uso
+
+Abaixo está um exemplo de como utilizar a MTU para processar uma entrada específica:
+
+```ruby
+mtu = MTU.new
+entrada = 'fabcd' # Exemplo de entrada
+mtu.processar(entrada)
+puts mtu.fita

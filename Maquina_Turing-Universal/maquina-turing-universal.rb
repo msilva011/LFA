@@ -1,3 +1,5 @@
+#Estrutura baseada no Do Celso
+
 class MTU
   attr_accessor :fita, :estado, :cursor, :estado_leitura, :simbolo_leitura, :estado_destino, :simbolo_escrita,
                 :movimento, :transicoes
@@ -20,6 +22,7 @@ class MTU
     transicoes = {}
     @fita_cadeia = []
 
+    #Transição baseada numa maquina de turing pura criada anteriormente
     while true
       case [@estado, @fita[@cursor]]
 
@@ -139,7 +142,7 @@ class MTU
   def submaquina(transicoes)
     estado_mt = 'fa'
     @cursor_le = 0
-
+    #Stella - ajustado 
     while true
       simbolo_leitura = @fita_cadeia[@cursor_le]
       leitura = [estado_mt, simbolo_leitura]
@@ -182,7 +185,7 @@ class MTU
     @estado = estado
     @cursor += (movimento == :D) ? 1 : -1
   end
-
+  #Gabriel ajudou com essa
   def fita_com_marca
     fita_dup = @fita.dup
     fita_dup.insert(@cursor, "[")
