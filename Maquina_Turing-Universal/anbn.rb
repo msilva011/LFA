@@ -1,37 +1,36 @@
-# Definição dos estados não finais
-q0 = "aa"
-q1 = "aaaa"
-q2 = "aaaaaa"
-q3 = "aaaaaaaa"
+module Anbn
+  q0 = "fa"        
+  q1 = "faa"       
+  q2 = "faaa"      
+  q3 = "faaaa"     
+  q4 = "faab"      
+  q5 = "fb"        
 
-# Definição do estado final
-q4 = "a"
+  @a = "sc"        
+  @x = "scc"       
+  @b = "sccc"      
+  @y = "scccc"     
+  @branco = "_"     
 
-@b = "ba"
+  esq = "e"        
+  dir = "d"        
 
-@x = "bbba"
-@y = "bbbbbba"
+  @d1 = "#{q0}#{@a}#{q1}#{@x}#{dir}"    
+  @d2 = "#{q1}#{@a}#{q1}#{@a}#{dir}"    
+  @d3 = "#{q1}#{@b}#{q2}#{@b}#{esq}"    
+  @d4 = "#{q2}#{@a}#{q2}#{@a}#{esq}"    
+  @d5 = "#{q2}#{@x}#{q0}#{@x}#{dir}"    
+  @d6 = "#{q0}#{@b}#{q3}#{@y}#{dir}"    
+  @d7 = "#{q3}#{@b}#{q3}#{@b}#{dir}"    
+  @d8 = "#{q3}#{@branco}#{q4}#{@branco}#{esq}"  
+  @d9 = "#{q4}#{@y}#{q4}#{@y}#{esq}"    
+  @d10 = "#{q4}#{@x}#{q5}#{@x}#{dir}"   
 
-# Movimentação do cursor
-esq = "c"
-dir = "cc"
+  def self.linker
+    "#{@d1}#{@d2}#{@d3}#{@d4}#{@d5}#{@d6}#{@d7}#{@d8}#{@d9}#{@d10}"
+  end
 
-# Transições
-@d1 = "#{q0}#{@x}#{q1}#{@b}#{dir}"    # (q0, x) = (q1, _, dir)
-@d2 = "#{q1}#{@x}#{q1}#{@x}#{dir}"    # (q1, x) = (q1, x, dir)
-@d3 = "#{q1}#{@y}#{q1}#{@y}#{dir}"    # (q1, y) = (q1, y, dir)
-@d4 = "#{q1}#{@b}#{q2}#{@b}#{esq}"    # (q1, _) = (q2, _, esq)
-@d5 = "#{q2}#{@y}#{q3}#{@b}#{esq}"    # (q2, y) = (q3, _, esq)
-@d6 = "#{q3}#{@x}#{q3}#{@x}#{esq}"    # (q3, x) = (q3, x, esq)
-@d7 = "#{q3}#{@y}#{q3}#{@y}#{esq}"    # (q3, y) = (q3, y, esq)
-@d8 = "#{q3}#{@b}#{q0}#{@b}#{dir}"    # (q3, _) = (q0, _, dir)
-@d9 = "#{q2}#{@b}#{q4}#{@b}#{dir}"    # (q2, _) = (q4, _, dir)
-@d10 = "#{q0}#{@b}#{q4}#{@b}#{dir}"   # (q0, _) = (q4, _, dir)
-
-def linker 
-  "#{@d1}#{@d2}#{@d3}#{@d4}#{@d5}#{@d6}#{@d7}#{@d8}#{@d9}#{@d10}"
-end
-
-def codificacao_cadeia 
-  "#{@x}#{@x}#{@x}#{@y}#{@y}"
+  def self.codificacao_cadeia
+    "#{@a}#{@a}#{@a}#{@b}#{@b}#{@b}"
+  end
 end
