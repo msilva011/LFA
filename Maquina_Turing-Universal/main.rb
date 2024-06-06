@@ -1,32 +1,21 @@
-require_relative 'maquina-turing-universal'
-require_relative 'mt-codificada'
+require_relative 'mt-universal'
+require_relative 'anbn'
 
-def processar_entrada(entrada)
-  mt = MTU.new(entrada)
-
-  if entrada.include?('c')
-    mt.extend(CodificacaoAnBnCn)
-    mt.configurar
-  else
-    mt.extend(CodificacaoAnBn)
-    mt.configurar
-  end
-
-  result = mt.processar
-  puts ("================Resultados==============")
-  puts "Entrada:\n #{entrada}"
-  puts "Aceita? #{result}"
-  puts "Fita Resultante:\n #{mt.fita.join}"
-  puts "Cursor parou em #{mt.cursor}"
-  puts "Cursor no estado #{mt.estado}"
-  puts "Cursor está lendo \"#{mt.fita[mt.cursor] || 'nil'}\""
-  puts ("*********************************")
+# Função para ler o conteúdo do arquivo
+def arquivo_entrada(input)
+  File.read(input).strip
 end
 
-#caso deseje passar como entrada várias palavras
-entradas = File.read('input.txt').strip.split('$')
-entradas.each do |entrada|
-  processar_entrada(entrada)
-end
+# Nome do arquivo contendo a entrada
+input = 'input.txt'
+entrada = arquivo_entrada(input)
+entrada = linker + "$" + entrada
 
-#exemplo: aabbcc$ab$abbc
+mt = MTU.new
+
+puts "Entrada:\n #{entrada}"
+puts "Decidiu? #{mt.processar(entrada)}"
+puts "Fita Resultante:\n #{mt.fita}"
+puts "Cursor parou em #{mt.cursor}"
+puts "Cursor no estado #{mt.estado}"
+puts "Cursor está lendo \"#{mt.fita[mt.cursor]}\""
