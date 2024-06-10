@@ -39,7 +39,7 @@ class JsonValidator
       context = []
   
       tokens.each do |token|
-        raise "JSON inválido: esperava vírgula" if @expect_comma && token != ',' && token != '}' && token != ']'
+        raise "JSON inválido. Verifique: esperava vírgula" if @expect_comma && token != ',' && token != '}' && token != ']'
   
         case token
         when '{', '['
@@ -57,7 +57,7 @@ class JsonValidator
           context.pop
           @expect_comma = true
         when ':'
-          raise "JSON inválido: chave não entre aspas" if @last_key.nil?
+          raise "JSON inválido. Verifique: chave não entre aspas" if @last_key.nil?
           @expect_comma = false
         when ','
           @expect_comma = false
@@ -65,7 +65,7 @@ class JsonValidator
         else
           if context.last.is_a?(Hash)
             if @last_key.nil?
-              raise "JSON inválido: chave não entre aspas" unless token =~ /^"(.*)"$/
+              raise "JSON inválido. Verifique: chave não entre aspas" unless token =~ /^"(.*)"$/
               @last_key = parse_value(token)
             else
               append_to_context(context.last, parse_value(token, true))
@@ -99,7 +99,7 @@ class JsonValidator
       when 'null'
         nil
       else
-        raise "JSON inválido: valor não entre aspas onde esperado" if is_value
+        raise "JSON inválido. Verifique: valor não entre aspas onde esperado" if is_value
         token
       end
     end
@@ -129,7 +129,7 @@ class JsonValidator
         puts "JSON #{result[:index]} válido"
         puts result[:result]
       else
-        puts "JSON #{result[:index]} inválido: #{result[:error]}"
+        puts "JSON #{result[:index]} - #{result[:error]}"
       end
     end
   rescue RuntimeError => e

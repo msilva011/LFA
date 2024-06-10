@@ -1,0 +1,33 @@
+{
+    "nome": "João",
+    "idade": 30,
+    "hobbies": ["ler", "caminhar", "programar"],
+    "contato": {
+      "email": "joao@example.com",
+      "telefone": "+5511999887766"
+    },
+    "ativo": true
+  }
+  $
+  {
+    "nome": "João",
+    "idade": 30,
+    "hobbies": ["ler", "caminhar", "programar"]
+    "contato": {
+      "email": "joao@example.com",
+      "telefone": "+5511999887766"
+    },
+    "ativo": true
+  }
+  $
+  {
+    "nome": "João",
+    "idade": 30,
+    "hobbies": ["ler", "caminhar", "programar"],
+    "contato": {
+      "email": "joao@example.com",
+      "telefone": "+5511999887766"
+    },
+    ativo: true
+  }
+  
