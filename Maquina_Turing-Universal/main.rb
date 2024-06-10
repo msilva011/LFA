@@ -1,16 +1,10 @@
 require_relative 'mt-universal'
 require_relative 'anbn'
 
-# Função para ler o conteúdo do arquivo
-def arquivo_entrada(input)
-  File.read(input).strip
-end
 
-# Nome do arquivo contendo a entrada
-input = 'input.txt'
-entrada = arquivo_entrada(input)
-entrada = linker + "$" + entrada
+puts "################################################"
 
+entrada = Anbn.linker + '$' + Anbn.codificacao_cadeia
 mt = MTU.new
 
 puts "Entrada:\n #{entrada}"
