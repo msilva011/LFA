@@ -1,6 +1,6 @@
 # JsonValidator
 
-[Apresentacao](https://www.canva.com/design/DAGH2fyKj6s/laMqHTpTMGfIGt-PS-4LEA/edit?utm_content=DAGH2fyKj6s&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+[Apresentacao](https://www.canva.com/design/DAGH2fyKj6s/e3-TRtbExvrCHKjC3sfkaQ/view?utm_content=DAGH2fyKj6s&utm_campaign=designshare&utm_medium=link&utm_source=editor)
 
 ## Descrição
 `JsonValidator` é um projeto desenvolvido em Ruby projetado para validar eficientemente múltiplos segmentos JSON contidos em uma única string, separados por um delimitador específico (`$`). 
